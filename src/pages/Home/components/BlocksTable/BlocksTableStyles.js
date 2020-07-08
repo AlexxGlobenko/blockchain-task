@@ -5,20 +5,15 @@ export default styled.div`
 
   .row {
     display: grid;
-    grid-template-columns: 1fr 3fr 2fr 2fr 2.5fr;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 2.5fr);
+    grid-template-columns: 1fr 3fr 2fr 2.5fr;
     grid-gap: 1em;
     padding: 0.75rem 0px;
     border-bottom: 1px solid rgb(240, 242, 247);
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: rgb(240, 242, 247);
 
     .column {
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      /* border: 2px solid black; */
 
       .column-title {
         font-family: "Inter";
@@ -28,8 +23,6 @@ export default styled.div`
         text-transform: none;
         font-style: normal;
       }
-
-      
 
       .column-value {
         color: rgb(53, 63, 82);

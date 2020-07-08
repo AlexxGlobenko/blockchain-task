@@ -1,10 +1,7 @@
 import React, { memo } from 'react';
-import { Switch, Redirect } from 'react-router-dom';
+import { Switch, Redirect, Route } from 'react-router-dom';
 
-import {
-  LazyWrapper,
-  ProtectedRoute
-} from 'ui';
+import { LazyWrapper } from 'ui';
 
 const Page404 = React.lazy(() => import('pages/Page404'));
 const Home = React.lazy(() => import('pages/Home'));
@@ -13,7 +10,7 @@ const BlockScreen = React.lazy(() => import('pages/BlockScreen'));
 const Router = () => (
   <Switch>
     {routes.map((route) => (
-      <ProtectedRoute
+      <Route
         key={route.path}
         {...route}
         component={LazyWrapper(route.component)}
@@ -33,7 +30,7 @@ const routes = [
     component: Home
   }, {
     path: '/btc/block/:hash',
-    exact: false,
+    exact: true,
     component: BlockScreen
   }, {
     path: '/',

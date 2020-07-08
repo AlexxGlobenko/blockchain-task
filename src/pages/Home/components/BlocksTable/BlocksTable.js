@@ -11,9 +11,12 @@ const valuesFieldNames = ['height', 'hash', 'time', 'size'];
 const BlocksTable = ({
   getBlocks, blocksList, spinner
 }) => {
-  useEffect(() => {
+  
+  const getBlocksData = () => {
     getBlocks();
-  }, []);
+  };
+
+  useEffect(getBlocksData, []);
 
   const toDateString = (date) => {
     const fixedDate = date * 1000;
@@ -56,14 +59,11 @@ const BlocksTable = ({
             <div className="column" key={blockKey}>
               {blockKey === 'time' && (<span className="column-value">{toDateString(block[blockKey])}</span>)}
               {blockKey === 'hash' && (
-                <>
-                  {editHash(block[blockKey])}
-                </>
+                editHash(block[blockKey])
               )}
               {(blockKey === 'height') && (<span className="column-value">{block[blockKey]}</span>)}
               {(blockKey === 'size') && (<span className="column-value">{formatter(block[blockKey])}</span>)}
             </div>
-
           ))}
         </div>
       ))}

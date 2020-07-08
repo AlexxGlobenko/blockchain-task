@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import globalStore from 'store/global/reducer';
+import globalStore from 'store/global/global.reducer';
 import blocksReducer from './blocks/blocks.reducer';
 
 export default combineReducers({

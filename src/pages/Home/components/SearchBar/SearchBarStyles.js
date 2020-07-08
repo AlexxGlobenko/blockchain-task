@@ -2,9 +2,7 @@ import styled from 'styled-components';
 
 export default styled.div`
   display: flex;
-  -webkit-box-align: center;
   align-items: center;
-  -webkit-box-pack: justify;
   justify-content: space-between;
   margin-right: 1.5rem;
   width: 100%;
@@ -32,7 +30,6 @@ export default styled.div`
     padding: 0;
     font-size: 100%;
     font-style: normal;
-    -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     max-height: 32px;
 
@@ -44,9 +41,7 @@ export default styled.div`
 
       display: flex;
       flex-direction: row;
-      -webkit-box-pack: center;
       justify-content: center;
-      -webkit-box-align: center;
       align-items: center;
       height: 2.5rem;
       line-height: 2.5rem;
@@ -65,7 +60,6 @@ export default styled.div`
       border-color: initial;
       border-image: initial;
       border-radius: 0.255rem;
-      /* outline: none; */
       transition: all 0.3s ease 0s;
     }
   } 

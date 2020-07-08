@@ -1,10 +1,10 @@
 import config from 'config';
 import axios from './axios';
 
-export const getLast = () => axios.get(`${config.apiBaseUrl}/asdasd`);
+export const getLast = () => axios.get(`${config.apiBaseUrl}/latestblock`);
 
-export const getTableData = (requestString) => axios.get(`${config.secondaryApiBaseUrl}/${requestString}`, { params: { notx: true } });
+export const getTableData = (heights) => axios.get(`${config.secondaryApiBaseUrl}/haskoin-store/btc/block/heights`, { params: { notx: true, heights } });
 
-export const getBlockData = (requestString) => axios.get(`${config.secondaryApiBaseUrl}/${requestString}`);
+export const getBlockData = (blockHash) => axios.get(`${config.secondaryApiBaseUrl}/haskoin-store/btc/block/${blockHash}`);
 
-export const getBlockTransactions = (requestString) => axios.get(`${config.secondaryApiBaseUrl}/${requestString}`);
+export const getBlockTransactions = (txids) => axios.get(`${config.secondaryApiBaseUrl}/haskoin-store/btc/transactions`, { params: { txids }});

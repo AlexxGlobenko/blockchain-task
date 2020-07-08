@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import * as blocksActions from '../../../../store/blocks/blocks.actions';
+import * as blocksActions from 'store/blocks/blocks.actions';
 
 const mapStateToProps = ({ blocks, global }) => ({
   blocksList: blocks.blocksList,

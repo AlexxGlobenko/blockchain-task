@@ -7,31 +7,35 @@ import connect from './connect';
 
 const fieldNames = {
   hash: 'Hash',
-  // confirmations: "Confirmations",
   time: 'Timestamp',
   height: 'Height',
-  // transactionsQuantitty: '',
-  // difficulty: '',
   merkle: 'Merkle root',
   version: 'Version',
   bits: 'Bits',
   weight: 'Weight',
   size: 'Size',
   nonce: 'Nonce'
-  // transactionsVolume: '',
-  // blockReward: '',
-  // feeReward: ''.
 };
 
 const BlockData = ({
-  blockTransactions, getBlockTransactionsAction, blockData, spinner, getBlock, match: { params: { hash } }
+  blockTransactions,
+  getBlockTransactionsAction,
+  blockData,
+  spinner,
+  getBlock,
+  match: { params: { hash } }
 }) => {
-  useEffect(async () => {
-    const getBlockResult = await getBlock(hash);
-    if (getBlockResult) {
-      getBlockTransactionsAction(getBlockResult.tx);
-    }
-  }, []);
+
+  const getBlockInfo = () => {
+    (async () => {
+      const getBlockResult = await getBlock(hash);
+      if (getBlockResult) {
+        getBlockTransactionsAction(getBlockResult.tx);
+      }
+    })();
+  };
+
+  useEffect(getBlockInfo, []);
 
   if (spinner) {
     return <Spinner />;
@@ -40,11 +44,11 @@ const BlockData = ({
   return (
     <BlockDataStyles>
       <h1 className="page-title">
-Block
+        Block
         {blockData.height}
       </h1>
       {Object.keys(fieldNames).map((fieldName) => (
-        <div className="row">
+        <div className="row" key={fieldName}>
           <div className="column column-title">
             <span>{fieldNames[fieldName]}</span>
           </div>
@@ -59,23 +63,23 @@ Block
           {blockTransactions.map((transaction) => (
             <div className="transaction-row" key={transaction.txid}>
               <span className="hash">
-Hash:
+                Hash:
                 {transaction.txid}
               </span>
               {(transaction.inputs && transaction.outputs) && (
-              <div className="nested-transaction-row">
-                <div className="addresses-wrapper">
-                  {transaction.inputs.map((input) => (
-                    <span>{input.address}</span>
-                  ))}
+                <div className="nested-transaction-row">
+                  <div className="addresses-wrapper">
+                    {transaction.inputs.map((input) => (
+                      <span key={input.address}>{input.address}</span>
+                    ))}
+                  </div>
+                  <img src={Arrow} className="arrow" alt="icon" />
+                  <div className="addresses-wrapper">
+                    {transaction.outputs.map((input, index) => (
+                      <span key={index}>{input.address}</span>
+                    ))}
+                  </div>
                 </div>
-                <img src={Arrow} className="arrow" alt="icon" />
-                <div className="addresses-wrapper">
-                  {transaction.outputs.map((input) => (
-                    <span>{input.address}</span>
-                  ))}
-                </div>
-              </div>
               )}
             </div>
           ))}

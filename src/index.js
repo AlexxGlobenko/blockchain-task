@@ -2,29 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { Provider } from 'react-redux';
-import { createBrowserHistory } from 'history';
-import { Router as HistoryProvider } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
 
 import store from 'store';
 import * as serviceWorker from 'serviceWorker';
 
 import GlobalStyles from 'ui/styles/GlobalStyles';
-import ThemeProvider from 'ui/styles/ThemeProvider';
 import App from 'App';
-
-export const history = createBrowserHistory();
 
 ReactDOM.render(
   <Provider store={store}>
-    <HistoryProvider history={history}>
-      <ThemeProvider>
-        <>
-          <GlobalStyles />
+    <BrowserRouter>
+      <>
+        <GlobalStyles />
 
-          <App />
-        </>
-      </ThemeProvider>
-    </HistoryProvider>
+        <App />
+      </>
+    </BrowserRouter>
   </Provider>, document.getElementById('root')
 );
 

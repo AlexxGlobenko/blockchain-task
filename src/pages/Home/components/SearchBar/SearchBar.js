@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import SearchBarStyles from './SearchBarStyles';
-import SearchIcon from '../../../../ui/images/search-icon.svg';
+import SearchIcon from 'ui/images/search-icon.svg';
 import connect from './connect';
 
 const SearchBar = ({ history, getBlock }) => {
@@ -16,6 +16,8 @@ const SearchBar = ({ history, getBlock }) => {
     const getBlockResult = await getBlock(searchString);
     if (getBlockResult) {
       history.push(`/btc/block/${searchString}`);
+    } else {
+      history.push(`/404`);
     }
   };
 

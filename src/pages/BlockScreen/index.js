@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react';
+import React, { memo } from 'react';
 import PageStyles from './components/PageStyles';
 import BlockData from './components/BlockData/BlockData';
 

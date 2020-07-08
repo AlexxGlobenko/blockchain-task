@@ -14,8 +14,8 @@ export default createGlobalStyle`
     font-weight: normal;
     font-size: 15px;
     line-height: 24px;
-    color: ${({ theme: { colors } }) => colors.mainText};
-    background-color: ${({ theme: { colors } }) => colors.mainBackground};
+    color: black;
+    background-color: white;
   }
 
   html,

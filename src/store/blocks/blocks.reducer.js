@@ -1,7 +1,8 @@
 import {
   GET_BLOCKS_TABLE_DATA,
   GET_BLOCK_DATA,
-  GET_BLOCK_TRANSACTIONS
+  GET_BLOCK_TRANSACTIONS,
+  REFRESH_WHOLE_STORE
 } from '../actionNames';
 
 const getInitialState = () => ({
@@ -29,6 +30,9 @@ const blocksReducer = (state = getInitialState(), action) => {
         ...state,
         blockTransactions: action.data
       };
+    case REFRESH_WHOLE_STORE:
+      return getInitialState();
+
     default:
       return state;
   }

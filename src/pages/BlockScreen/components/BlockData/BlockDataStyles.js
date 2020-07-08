@@ -16,11 +16,7 @@ export default styled.div`
   .transaction-row {
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
     border-bottom: 1px solid rgb(240, 242, 247);
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: rgb(240, 242, 247);
     padding: 30px 0;
 
     .hash {
@@ -54,15 +50,12 @@ export default styled.div`
     grid-gap: 1em;
     padding: 0.75rem 0px;
     border-bottom: 1px solid rgb(240, 242, 247);
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: rgb(240, 242, 247);
 
      .column {
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      font-family: Inter,
+      font-family: Inter;
       font-size: 14px;
     }
 
@@ -73,4 +66,5 @@ export default styled.div`
     .column-value {
       color: rgb(53, 63, 82);
     }
+  }
 `;
