@@ -1,10 +1,15 @@
 import React, { memo } from 'react';
 
 import PageStyles from './components/PageStyles';
+import SearchBar from './components/SearchBar/SearchBar';
+import BlocksTable from './components/BlocksTable/BlocksTable';
 
 const Home = () => (
   <PageStyles>
-    Home page
+    <div className="top-wrapper">
+      <SearchBar />
+    </div>
+    <BlocksTable />
   </PageStyles>
 );
 

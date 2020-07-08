@@ -1,14 +1,14 @@
 import React, { memo } from 'react';
-import { Switch } from 'react-router-dom';
+import { Switch, Redirect } from 'react-router-dom';
 
 import {
   LazyWrapper,
   ProtectedRoute
 } from 'ui';
-import auth from './auth';
 
 const Page404 = React.lazy(() => import('pages/Page404'));
 const Home = React.lazy(() => import('pages/Home'));
+const BlockScreen = React.lazy(() => import('pages/BlockScreen'));
 
 const Router = () => (
   <Switch>
@@ -23,15 +23,24 @@ const Router = () => (
 );
 
 const routes = [
-  ...auth, {
+  {
     path: '/',
     exact: true,
+    component: () => <Redirect to="/btc/blocks" />
+  }, {
+    path: '/btc/blocks',
+    exact: true,
     component: Home
+  }, {
+    path: '/btc/block/:hash',
+    exact: false,
+    component: BlockScreen
   }, {
     path: '/',
     exact: false,
     component: Page404
   }
+
 ];
 
 export default memo(Router);
